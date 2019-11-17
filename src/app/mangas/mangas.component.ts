@@ -1,18 +1,21 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+
+
 import { Router } from '@angular/router';
 
-import { MangaService } from './service'
+import { MangaService } from '../service'
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: 'app-mangas',
+  templateUrl: './mangas.component.html',
+  styleUrls: ['./mangas.component.css']
 })
-export class AppComponent {
+export class MangasComponent implements OnInit {
   title = 'my-dream-app';
   chapter = 1;
   mangas = {};
   imageArray = [];
+  private manga;
   constructor(
     public mangaAPI: MangaService, 
     public router: Router
@@ -21,12 +24,15 @@ export class AppComponent {
   ngOnInit() {
     this.loadChapters();
     this.loadMangas();
+    this.mangaAPI.currentManga.subscribe(manga => this.manga = manga);
     }
+  
     clickManga(url,id) {
       console.log(url + id,id);
       this.router.navigate([url + id]).then( (e) => {
         if (e) {
           console.log("Navigation is successful!");
+          this.mangaAPI.changeManga(id);
         } else {
           console.log("Navigation has failed!");
         }
@@ -63,4 +69,5 @@ export class AppComponent {
       }
     }
 }
+
 

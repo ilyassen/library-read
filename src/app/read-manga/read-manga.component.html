@@ -1,0 +1,11 @@
+CHAPTERS :
+<div  (keydown)="onKeydown($event)" class='center' tabindex="0">
+    <div  *ngFor="let chapter of images.chapters">
+        <!-- <div [ngStyle]="{'background-image':'url('+ chapter.name +')'}"></div> <br /> -->
+        <!-- <div [style.background-image]="chapter.name"></div> <br /> -->
+        <!-- <img src="assets/img/1.jpg" alt="image"> -->
+        <!-- <div style="background-image: url('{{getImgContent(chapter.name)}}');"> </div> -->
+        <img [src]="getSafeUrl(chapter.name)" alt="image">
+        <!-- <iframe [src]="getSafeUrl(chapter.name)" frameborder="0" ></iframe> -->
+    </div>
+</div>

@@ -1,0 +1,7 @@
+<p>{{manga}}</p>
+<div class='container-fluid'>
+    <div class='col-md-6' *ngFor='let chapter of chapters.chapters' (click)="navigateToChapter(chapter.name)">
+        <label > {{chapter.name}}</label>  
+        <!-- <div *ngIf='i % 2' > <br > </div> -->
+    </div>
+</div>
