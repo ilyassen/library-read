@@ -73,12 +73,14 @@ navigateToChapter(id:string) {
         
         ch--;
         this.navigateToChapter(ch.toString());
+        window.scroll(0,0);
 
       }
       else if (e.keyCode == '39') {
         // right arrow
         ch++;
         this.navigateToChapter(ch.toString());
+        window.scroll(0,0);
       }
 
   }
